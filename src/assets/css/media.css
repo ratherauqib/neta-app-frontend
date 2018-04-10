@@ -1,0 +1,58 @@
+@media(max-width:1280px) and (min-width:995px){
+    button.btn.vote-btn{margin-left: 10px;margin-top: 10px; float: left;}
+    .candidate-info{width: calc(100% - 40px);}
+}
+@media(max-width:995px) and (min-width:768px){
+    ul.navigation li a {padding: 0 10px;font-size: 14px;}
+    nav{padding-left: 20px;}
+    input.search-input{width: 170px}
+}
+@media(max-width:767px){
+    .logo-section{display: none}
+    .tab-content.card.tab-content-section{padding: 10px 0}
+    .custom-card{padding: 20px}
+    .custom-card h3{font-size: 20px}
+    ul.navigation li{width: 100%}
+    ul.navigation li a{min-height: 48px ; font-size: 14px; color: var(--font-color)}
+    .navbar-toggle {display: block;}
+    header.open input.search-input{opacity: 1; visibility: visible;}
+    input.search-input {opacity: 0; visibility: hidden;padding: 5px 20px;position: absolute;width: calc(100% - 20px);left: 10px;right: 10px;top: 60px;z-index: 10;border-radius: 50px;}
+    .open header.fixed{left: -230px; transition: left 0.5s}
+    header.fixed{left: 0px; transition: left 0.5s}
+    .poll-option input[type="radio"] +label {min-height: 60px;font-size: 14px;line-height: 16px;}
+    ul.vote-data-list li label {font-size: 14px;}
+    button.signup.btn{margin-left: 15px}
+    .upper-tab-section ul.nav.nav-tabs.nav-justified li a {font-size: 14px;padding: 0 8px;}
+    .panel.cust-panel {height: auto;margin-bottom: 20px;}
+    button.search-btn i {font-size: 24px;}
+    header{    transition: height 0.5s;}
+    header.open {height: 110px;        transition: height 0.5s;}
+    nav {padding: 0;position: fixed;top: 0;bottom: 0;background: #fff;width: 230px;left: 0;height: 100vh;z-index: 10;transform: translate3d(-230px,0,0);transition: transform 0.5s;}
+    .search-section{margin: 0; position: static}
+    button.search-btn {position: relative;left: 0;background: rgba(0,0,0,0.05);border: 0px;color: #fff;top: 0;font-size: 16px;bottom: 0;display: flex;align-items: center;width: 40px;justify-content: center;padding: 0;height: 40px;border-radius: 50%;}
+   .open  nav {margin-right: 0px;transition: margin 0.5s;}
+    body.open {position: relative;transform:translate3d(230px , 0,0);transition: transform 0.5s; overflow: hidden;}
+    body{ transform:translate3d(0px , 0,0);transition: transform 0.5s;}
+    body.open nav {transition: transform 0.5s;}
+    ul.navigation li a:after {content: '';width: 2px;background: #fff;position: absolute;bottom: 0;left: 0;right: auto;        transition: transform 0.5s;transform: scale(1,0);top: 0;        height: 100%;}
+    nav::after{display: none}
+    .toogle-btn {display: block}
+    .overlay {
+        background: rgba(0,0,0,0.5);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        float: left;
+        height: 100vh;
+        opacity: 0;
+        display: none;
+    }
+   body.open  .overlay {opacity: 1;display: block}
+}
+@media(max-width:400px){
+    .news-img {float: left;width: 100%;height: auto;margin-bottom: 20px;}
+    .news-img + .news-content {float: left;width: 100%;padding-left: 0;}
+}

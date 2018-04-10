@@ -1,10 +1,12 @@
-import { LeadersComponent } from './../../site/components/leaders/leaders.component';
+import { ProfileComponent } from './../../site/components/profile/profile.component';
 import { Routes } from '@angular/router';
-import { SiteComponent } from '../../site/site.component';
+
 import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
-import { HomeComponent } from '../../site/components/home/home.component';
-import { IssuesComponent } from '../../site/components/issues/issues.component';
-import { InfluencersComponent } from '../../site/components/influencers/influencers.component';
+import { StarCitizensComponent } from '../../site/components/star-citizens/star-citizens.component';
+import { SiteComponent } from '../../site/site.component';
+import { DiscussionComponent } from './../../site/components/discussion/discussion.component';
+import { ResultsComponent } from './../../site/components/results/results.component';
+import { VotingBoothComponent } from './../../site/components/voting-booth/voting-booth.component';
 
 
 export const SITE_ROUTES: Routes = [
@@ -13,19 +15,22 @@ export const SITE_ROUTES: Routes = [
 		component: SiteComponent,
 		children:[
 			{
-				path:'',component:HomeComponent,pathMatch:'full'
+				path:'',component:ResultsComponent,pathMatch:'full'
 			},
 			{ 
-				path: 'issues' ,component:IssuesComponent
+				path: 'discussion', component:DiscussionComponent
 			},
 			{
-				path: 'leaders',	component:LeadersComponent
+				path: 'voting-booth', component:VotingBoothComponent
 			},
 			{
-				path: 'influencers',		component:InfluencersComponent
+				path: 'star-citizens', component:StarCitizensComponent
 			},
 			{
-				path: '**',		component: NotFoundComponent,
+				path: 'profile', component:ProfileComponent
+			},
+			{
+				path: '**',	component: NotFoundComponent,
 			}
 		]
 	},

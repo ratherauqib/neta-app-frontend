@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { routes } from './../config/routes';
-import { HomeComponent } from './components/home/home.component';
-import { InfluencersComponent } from './components/influencers/influencers.component';
-import { IssuesComponent } from './components/issues/issues.component';
-import { LeadersComponent } from './components/leaders/leaders.component';
+import { DiscussionComponent } from './components/discussion/discussion.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ResultsComponent } from './components/results/results.component';
+import { StarCitizensComponent } from './components/star-citizens/star-citizens.component';
+import { VotingBoothComponent } from './components/voting-booth/voting-booth.component';
 import { SiteComponent } from './site.component';
 import { AppHeaderComponent } from './toolbars/app-header/app-header.component';
+import { SidebarComponent } from './toolbars/sidebar/sidebar.component';
+import { SubHeaderComponent } from './components/results/components/sub-header/sub-header.component';
 
 @NgModule({
   imports: [
@@ -19,10 +22,13 @@ import { AppHeaderComponent } from './toolbars/app-header/app-header.component';
   declarations: [
     SiteComponent,
     AppHeaderComponent,
-    HomeComponent,
-    IssuesComponent,
-    LeadersComponent,
-    InfluencersComponent
+    ProfileComponent,
+    SidebarComponent,
+    DiscussionComponent,
+    VotingBoothComponent,
+    ResultsComponent,
+    StarCitizensComponent,
+    SubHeaderComponent
   ]
 })
 export class SiteModule { }
