@@ -9,9 +9,7 @@ export class CondidatesService extends BaseService {
     super();
   }
   getAllCandidates(){
-    return this.http.get(this._url+'/candidatures?constituency_id=44443cf7-51ad-422d-a9c6-11a322d5797a',this.get_options()).map(res=>{
-      return res.json();
-    })
+    return this.http.get(this._url+'/candidatures?constituency_id=44443cf7-51ad-422d-a9c6-11a322d5797a',this.get_options());
   }
 
 

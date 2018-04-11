@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CondidatesService } from './../../../shared/services/condidates.service';
 
 @Component({
   selector: 'app-voting-booth',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VotingBoothComponent implements OnInit {
 
-  constructor() { }
+  candidates:any=[];
+  constructor(private candidateService:CondidatesService) { }
 
   ngOnInit() {
+    this.candidateService.getAllCandidates().subscribe(data=>{
+        this.candidates = data.json().data; 
+        console.log(this.candidates);
+    })
   }
-
 }

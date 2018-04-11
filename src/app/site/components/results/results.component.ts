@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-
+  candidates:any=[];
   constructor(private candidateService:CondidatesService) { }
 
   ngOnInit() {
     this.candidateService.getAllCandidates().subscribe(data=>{
-      console.log(data)
+        this.candidates = data.json().data; 
+        console.log(this.candidates);
     })
   }
 
