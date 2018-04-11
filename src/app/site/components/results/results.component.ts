@@ -1,3 +1,4 @@
+import { CondidatesService } from './../../../shared/services/condidates.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private candidateService:CondidatesService) { }
 
   ngOnInit() {
+    this.candidateService.getAllCandidates().subscribe(data=>{
+      console.log(data)
+    })
   }
 
 }

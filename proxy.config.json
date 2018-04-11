@@ -1,0 +1,12 @@
+
+
+{
+  "/api/v1/*": {
+    "target": "https://neta-dev.herokuapp.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/v1/*": ""
+    },
+    "changeOrigin": true
+  }
+}
