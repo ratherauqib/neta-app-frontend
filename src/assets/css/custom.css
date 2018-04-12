@@ -921,9 +921,7 @@ span.img-icon img{  width: 100%;
 }
 .poll-option-pic img{height: 100%;    object-fit: cover;}
 .poll-block ul.list-group.img-poll li.list-group-item input[type="radio"] + label::after{left: 10px; top:115px}
-<<<<<<< HEAD
 .info-list-icon svg{width: 20px}
-=======
 
 
 /* Developers style  */
@@ -936,4 +934,3 @@ span.img-icon img{  width: 100%;
     cursor: pointer;
     color: #f07b42;
 }
->>>>>>> 3767bb2f8e1fb9a03f6c77b8d2c9eaf5f5653210
