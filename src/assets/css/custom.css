@@ -85,7 +85,7 @@ h1, h2 , h3 {font-weight: 600}
 header,nav{float:left}
 .panel.cust-panel .panel-footer a.more-det:focus,.panel.cust-panel .panel-footer a.more-det:hover,.panel.cust-panel .panel-head select:focus,:focus{outline:0}
 .mrbtm30{margin-bottom:30px}
-body{background:var(--body-color)}
+body{background:var(--body-color) !important}
 header{width:100%;background:var(--main-color);height:60px; position: fixed; left: 0;right: 0;top: 0;z-index: 11}
 .container.main-container{max-width:1310px}
 .logo-section{float:left;margin:0;display:flex;min-height:60px;width:70px;align-items:center;padding:10px 0}
@@ -920,3 +920,15 @@ span.img-icon img{  width: 100%;
 }
 .poll-option-pic img{height: 100%;    object-fit: cover;}
 .poll-block ul.list-group.img-poll li.list-group-item input[type="radio"] + label::after{left: 10px; top:115px}
+
+
+/* Developers style  */
+.imageStyle{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.emptyAnchor{
+    cursor: pointer;
+    color: #f07b42;
+}

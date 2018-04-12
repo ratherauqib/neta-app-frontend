@@ -1,7 +1,10 @@
+
 import { CandidateProfileService } from './../../../shared/services/candidate-profile.service';
 import { CloudnaryService } from './../../../shared/services/cloudnary.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CondidatesService } from './../../../shared/services/condidates.service';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-voting-booth',
@@ -10,9 +13,20 @@ import { CondidatesService } from './../../../shared/services/condidates.service
 })
 export class VotingBoothComponent implements OnInit {
 
+  tab: any = {
+		mla_candidates: true,
+		mp_candidates: false,
+		local_bodies: false,
+	}
+
   candidates: any = [];
-  cUrl: string = ''
+  cUrl: string = '';
   constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
+  isActiveName:boolean = false;
+  isActiveVotes:boolean = true;
+
+  
+
   constructor(
     private candidateService: CondidatesService,
     private cloudnaryService: CloudnaryService,
@@ -22,6 +36,10 @@ export class VotingBoothComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showCandidates();
+  }
+
+  showCandidates(){
     this.candidateService.getAllCandidates().subscribe(data => {
       this.candidates = data.json().data;
       console.log(this.candidates);
@@ -32,4 +50,24 @@ export class VotingBoothComponent implements OnInit {
     console.log('hello:' + id);
     this.profileService.navigateCandidate(id, this.constituency_id);
   }
+
+  sortByName(){
+    this.isActiveName = true;
+    this.isActiveVotes = false;
+    this.candidates = _.sortBy(this.candidates,o=>o.candidate_name);
+  }
+  sortByVotes(){
+    this.isActiveVotes = true;
+    this.isActiveName = false;
+    this.candidates = _.sortBy(this.candidates,o=>o.votes);
+  }
+
+  switchTab(type) {
+		for (const key in this.tab) {
+			if (this.tab.hasOwnProperty(key))  
+				this.tab[key] = false;
+		}
+		this.tab[type] = true;
+  }
+ 
 }

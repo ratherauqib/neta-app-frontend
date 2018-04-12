@@ -11,7 +11,6 @@ import { VotingBoothComponent } from './components/voting-booth/voting-booth.com
 import { SiteComponent } from './site.component';
 import { AppHeaderComponent } from './toolbars/app-header/app-header.component';
 import { SidebarComponent } from './toolbars/sidebar/sidebar.component';
-import { SubHeaderComponent } from './components/results/components/sub-header/sub-header.component';
 
 
 
@@ -30,7 +29,6 @@ import { SubHeaderComponent } from './components/results/components/sub-header/s
     VotingBoothComponent,
     ResultsComponent,
     StarCitizensComponent,
-    SubHeaderComponent
   ]
 })
 export class SiteModule { }
