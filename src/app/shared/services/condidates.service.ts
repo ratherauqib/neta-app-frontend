@@ -5,6 +5,8 @@ import { BaseService } from './base.service';
 @Injectable()
 export class CondidatesService extends BaseService {
 
+  
+  
    constructor(private http:Http) { 
     super();
   }

@@ -5,7 +5,8 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-lg-3">
                     <div class="leader-profile-pic">
-                        <img src="assets/images/leader.png" alt="leader" />
+                        <!-- <img src="assets/images/leader.png" alt="leader" /> -->
+                        <img src="{{cloudNaryUrl}}{{info.profile_pic.cloudinary.public_id}}.jpg" style="height:100%;width:100%;" alt="leader"/>                         
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-lg-9">
@@ -33,18 +34,19 @@
             <div class="co-md-3 col-lg-3 col-xs-12 col-sm-12">
                 <div class="left-sidebar">
                     <div class="info-side-block">
-                        <h3>Manpreet Singh Badal
+                        <h3>{{party_info.candidature.candidate_name}}
                             <span class="new-badges">new</span>
                         </h3>
                         <ul>
                             <li>
                                 <span class="lead-info-icons noborder">
-                                    <img src="assets/images/cong.png" alt="" />
-                                </span>Indian National Congress</li>
+                                    <!-- <img src=" alt="" /> -->
+                             <img src="{{cloudNaryUrl}}{{party_info.party_profile_pic.cloudinary.public_id}}.jpg" style="height:100%;width:100%;"/>
+                                </span>{{party_info.party_name}}</li>
                             <li>
                                 <span class="lead-info-icons">
                                     <i class="fas fa-map-marker"></i>
-                                </span>Giddarbaha, Sri Muktsar Sahib</li>
+                                </span>{{party_info.candidature.constituency_name}}</li>
                             <li>
                                 <span class="lead-info-icons">
                                     <i class="fas fa-briefcase"></i>
@@ -54,7 +56,8 @@
                             <div class="voste-stat">
                                 <span>
                                     <img src="assets/images/vote1.png">VOTES</span>
-                                    <h6>01,011,<span>(45%)</span>
+                                    <h6>{{party_info.candidate_vote_count}},
+                                        <span>({{party_info.vote_percentage|number:'1.2-2'}}%)</span>
                                         <span class="up-icons">
                                                 <i class="fas fa-arrow-up"></i>
                                             </span></h6>
@@ -76,35 +79,35 @@
                                     <i class="material-icons">call</i>
                                 </span>
                                 <label>Phone</label>
-                                <span class="info-det">9876543210</span>
+                                <span class="info-det">{{contact_info.phone||"not provided"}}</span>
                             </li>
                             <li>
                                 <span class="info-list-icon">
                                     <i class="fas fa-envelope"></i>
                                 </span>
                                 <label>email</label>
-                                <span class="info-det">manpreetsinghbadal@gmail.com</span>
+                                <span class="info-det">{{contact_info.email}}</span>
                             </li>
                             <li>
                                 <span class="info-list-icon">
                                     <i class="fas fa-globe"></i>
                                 </span>
                                 <label>Website</label>
-                                <span class="info-det">www.msbadal.com</span>
+                                <span class="info-det">{{contact_info.email}}</span>
                             </li>
                             <li>
                                 <span class="info-list-icon">
                                     <i class="fab fa-facebook-f"></i>
                                 </span>
                                 <label>FACEBOOK</label>
-                                <span class="info-det">fb.com/badalmanpreetsingh</span>
+                                <span class="info-det">{{contact_info.facebook}}</span>
                             </li>
                             <li>
                                 <span class="info-list-icon">
                                     <i class="fab fa-twitter"></i>
                                 </span>
                                 <label>Twitter</label>
-                                <span class="info-det">@manpreetsbadal</span>
+                                <span class="info-det">{{contact_info.twitter}}</span>
                             </li>
 
 
@@ -117,7 +120,7 @@
                 <div class="tab-content card tab-content-section">
                     <!--.Panel 1-->
                     <div class="tab-pane fade in show active" id="About" role="tabpanel">
-                        <div class="leader-profile-block">
+                        <div class="leader-profile-block" *ngIf="info">
                             <h2>Info</h2>
                             <div class="panel cust-panel extra-padding">
                                 <div class="panel-body ">
@@ -127,42 +130,42 @@
                                                 <img src="assets/images/info1.png" alt="info" />
                                             </span>
                                             <label>Age</label>
-                                            <span class="info-det">47yrs</span>
+                                            <span class="info-det">{{info.age}}YRS</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info2.png" alt="info" />
                                             </span>
                                             <label>Gender</label>
-                                            <span class="info-det">Male</span>
+                                            <span class="info-det">{{info.gender||"Male"}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info3.png" alt="info" />
                                             </span>
                                             <label>RELIGION</label>
-                                            <span class="info-det">Sikh</span>
+                                            <span class="info-det">{{info.religion}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info4.png" alt="info" />
                                             </span>
                                             <label>CASTE</label>
-                                            <span class="info-det">Jatt</span>
+                                            <span class="info-det">{{info.caste}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info5.png" alt="info" />
                                             </span>
                                             <label>EDUCATION</label>
-                                            <span class="info-det">Graduate</span>
+                                            <span class="info-det">{{info.education.name}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info6.png" alt="info" />
                                             </span>
                                             <label>PROFESSION</label>
-                                            <span class="info-det">Private</span>
+                                            <span class="info-det">{{info.profession}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -170,7 +173,7 @@
                                             </span>
                                             <label>INCOME</label>
                                             <span class="info-det">
-                                                <i class="fas fa-rupee-sign"></i>80000</span>
+                                                <!-- <i class="fas fa-rupee-sign"></i> -->{{info.income}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -178,7 +181,7 @@
                                             </span>
                                             <label>ASSETS</label>
                                             <span class="info-det">
-                                                <i class="fas fa-rupee-sign"></i>42.20Cr</span>
+                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{info.assets}}Cr</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -186,14 +189,14 @@
                                             </span>
                                             <label>LIABILITIES</label>
                                             <span class="info-det">
-                                                <i class="fas fa-rupee-sign"></i>0</span>
+                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{info.liabilities}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
                                                 <img src="assets/images/info10.png" alt="info" />
                                             </span>
                                             <label>CRIMINAL CASES</label>
-                                            <span class="info-det">0</span>
+                                            <span class="info-det">{{info.criminal_cases}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -210,6 +213,7 @@
                             <div class="panel cust-panel">
                                 <div class="panel-body">
                                     <img src="assets/images/graph1.png" class="graph" alt="graph">
+                                   
                                 </div>
 
                             </div>
