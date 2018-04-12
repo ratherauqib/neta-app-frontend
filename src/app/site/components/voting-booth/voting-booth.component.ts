@@ -18,7 +18,7 @@ export class VotingBoothComponent implements OnInit {
 		mp_candidates: false,
 		local_bodies: false,
 	}
-
+  loading:boolean = false;
   candidates: any = [];
   cUrl: string = '';
   constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
@@ -40,7 +40,9 @@ export class VotingBoothComponent implements OnInit {
   }
 
   showCandidates(){
+    this.loading = true;
     this.candidateService.getAllCandidates().subscribe(data => {
+      this.loading = false;
       this.candidates = data.json().data;
       console.log(this.candidates);
     })

@@ -9,6 +9,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CondidatesService } from './services/condidates.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateProfileService } from './services';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -19,8 +20,8 @@ import { CandidateProfileService } from './services';
     HttpClientModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'neta-dev' } as CloudinaryConfiguration)
   ],
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundComponent, LoaderComponent],
   providers:[CondidatesService,CandidateProfileService,CloudnaryService],
-  exports:[CommonModule]
+  exports:[CommonModule,LoaderComponent]
 })
 export class SharedModule { }
