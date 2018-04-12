@@ -324,7 +324,7 @@ span.total-reply i{position:relative;top:0;font-size:18px;margin-right:5px}
 .sort-option ul li{float:left;width:auto;list-style:none;margin-left:20px}
 .sort-option ul li a{color:var(--font-color);opacity:.7;transition:.5s;font-size:14px;text-decoration:none}
 .sort-option ul li a.active,.sort-option ul li a:hover{color:var(--main-color);opacity:1;transition:.5s}
-ul.candidate-list.candidate-block li{padding:30px 40px;background:#fff;border-radius:10px;border:1px solid var(--border-color);margin-bottom:10px}
+ul.candidate-list.candidate-block li{padding:30px 40px;background:#fff;border-radius:10px;border:1px solid var(--border-color);margin-bottom:10px; overflow: hidden; position: relative;}
 ul.candidate-list.candidate-block li span.candidate-pic{width:60px;height:60px}
 ul.candidate-list.candidate-block li .candidate-info h4{font-size:20px}
 ul.candidate-list.candidate-block li .candidate-info h6{font-size:14px}
@@ -344,13 +344,14 @@ ul.chips li{background:var(--main-color);border-radius:50px;color:#fff;position:
 ul.chips li span i{font-size:16px}
 ul.chips li span{width:40px;height:40px;position:absolute;right:0;padding-right:0;top:0;background:rgba(0,0,0,.05);border-radius:50%;justify-content:center}
 ul.candidate-list.candidate-block.voted li{position:relative;border-bottom:0;overflow:hidden}
-ul.candidate-list .progress-bar{height:5px;position:absolute;left:0;right:0;bottom:0;background:var(--border-color)}
-ul.candidate-list .progress-bar .progress{position:absolute;left:0;top:0;bottom:0;width:50%;background:var(--main-color);border-radius:0}
+ul.candidate-list.voted .progress-bar{height:5px;position:absolute;left:0;right:0;bottom:0;background:var(--border-color)}
+ul.candidate-list .progress-bar .progress{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--main-color);border-radius:0; height: 5px; transition: 0.5s}
 ul.candidate-list li.selected .progress-bar .progress{background:var(--poll-color2)}
-.done-vote{float:right;width:40px;height:40px;background:#fff;border-radius:10px;border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--green-color);margin-top:10px}
+.done-vote{float:right;width:40px;height:40px;background:#fff;display:none;border-radius:10px;border:1px solid var(--border-color);align-items:center;justify-content:center;color:var(--green-color);margin-top:10px}
 ul.candidate-list.candidate-block.voted li .candidate-info{width:calc(100% - 260px)}
+.voted .done-vote{display: flex}
 .done-vote.other-vote{background:0 0;border:0;color:var(--font-color);opacity:.7}
-
+ul.candidate-list.voted .progress-bar .progress{width: 50%; transition: 0.5s;}
 section.cover-pic {
     float: left;
     width: 100%;
@@ -359,7 +360,7 @@ section.cover-pic {
     background-repeat: no-repeat;
     background-position: top center;
 }
-
+ul.candidate-list.candidate-block.voted li button.btn.vote-btn{display: none}
 .leader-profile-pic {
     position: relative;
     height: 200px;
@@ -567,7 +568,6 @@ span.new-badges {
 span.lead-info-icons {
     width: 30px;
     height: 30px;
-    overflow: hidden;
     position: absolute;
     left: 0;
     border: 1px solid var(--main-color);
@@ -921,8 +921,24 @@ span.img-icon img{  width: 100%;
 }
 .poll-option-pic img{height: 100%;    object-fit: cover;}
 .poll-block ul.list-group.img-poll li.list-group-item input[type="radio"] + label::after{left: 10px; top:115px}
-.info-list-icon svg{width: 20px}
-
+.media-section {
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+    display: block;
+    text-align: center;
+    
+}
+.video-sec {
+    float: none;
+    width: 145px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 5px;
+}
+.video-sec img{width: 100%;}
+.video-sec iframe{width: 100% !important;}
+.leader-profile-pic img{width: 100%}
 
 /* Developers style  */
 .imageStyle{
