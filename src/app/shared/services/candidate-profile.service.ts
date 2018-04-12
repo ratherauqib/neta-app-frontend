@@ -13,5 +13,7 @@ export class CandidateProfileService extends BaseService {
   getCanditateProfile(CANDIDATE_ID, CONSTITUENCY_ID) {
     return this.http.get(this._url + "/candidates/" + CANDIDATE_ID + "/?constituency_id=" + CONSTITUENCY_ID, this.get_options()).map(res => res.json());
   }
-  n
+  navigateCandidate(CANDIDATE_ID, CONSTITUENCY_ID){
+    console.log('navigating');
+  }
 }

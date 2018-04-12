@@ -10,26 +10,26 @@ import { CondidatesService } from './../../../shared/services/condidates.service
 })
 export class VotingBoothComponent implements OnInit {
 
-  candidates:any=[];
-  cUrl:string = ''
-  constituency_id:string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
+  candidates: any = [];
+  cUrl: string = ''
+  constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
   constructor(
-    private candidateService:CondidatesService,
-    private cloudnaryService:CloudnaryService,
-    private profileService:CandidateProfileService,
-  )  { 
-        this.cUrl = cloudnaryService.cloudnaryUrl;
-     }
+    private candidateService: CondidatesService,
+    private cloudnaryService: CloudnaryService,
+    private profileService: CandidateProfileService,
+  ) {
+    this.cUrl = cloudnaryService.cloudnaryUrl;
+  }
 
   ngOnInit() {
-    this.candidateService.getAllCandidates().subscribe(data=>{
-        this.candidates = data.json().data; 
-        console.log(this.candidates);
+    this.candidateService.getAllCandidates().subscribe(data => {
+      this.candidates = data.json().data;
+      console.log(this.candidates);
     })
   }
 
-  onProfileView(id){
-    console.log('hello:'+id);
-    this.profileService.navigateCandidate(id,this.constituency_id);
+  onProfileView(id) {
+    console.log('hello:' + id);
+    this.profileService.navigateCandidate(id, this.constituency_id);
   }
 }
