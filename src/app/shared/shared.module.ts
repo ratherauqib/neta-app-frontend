@@ -10,7 +10,7 @@ import { CondidatesService } from './services/condidates.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateProfileService } from './services';
 import { LoaderComponent } from './components/loader/loader.component';
-
+import { CookieService } from './services/cookie.service';
 
 
 @NgModule({
@@ -18,10 +18,11 @@ import { LoaderComponent } from './components/loader/loader.component';
     CommonModule,
     HttpModule,
     HttpClientModule,
+  
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'neta-dev' } as CloudinaryConfiguration)
   ],
   declarations: [NotFoundComponent, LoaderComponent],
-  providers:[CondidatesService,CandidateProfileService,CloudnaryService],
+  providers:[CondidatesService,CandidateProfileService,CloudnaryService,CookieService],
   exports:[CommonModule,LoaderComponent]
 })
 export class SharedModule { }

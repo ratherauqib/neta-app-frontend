@@ -29,6 +29,7 @@
 
         </div>
     </div>
+    <loader *ngIf="loading"></loader>
     <div class="container main-container">
         <div class="row custom-row">
             <div class="co-md-3 col-lg-3 col-xs-12 col-sm-12">
@@ -188,7 +189,7 @@
                                             </span>
                                             <label>INCOME</label>
                                             <span class="info-det">
-                                                {{filterRupees(info.income)|currency:"INR"}}</span>
+                                                {{filterRupees(info.income)|currency:"INR":'symbol':'4.0-0'}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -196,7 +197,7 @@
                                             </span>
                                             <label>ASSETS</label>
                                             <span class="info-det">
-                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{filterRupees(info.assets)|currency:"INR"}}Cr</span>
+                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{filterRupees(info.assets)|currency:"INR":'symbol':'4.0-0'}}Cr</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -204,7 +205,7 @@
                                             </span>
                                             <label>LIABILITIES</label>
                                             <span class="info-det">
-                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{info.liabilities}}</span>
+                                               <!-- <i class="fas fa-rupee-sign"></i>-->{{filterRupees(info.liabilities)|currency:"INR":'symbol':'4.0-0'}}</span>
                                         </li>
                                         <li>
                                             <span class="info-list-icon">
@@ -273,7 +274,7 @@
                     <!--/.Panel 1-->
                     <!--.Panel 2-->
                     <div class="tab-pane fade" id="Feed" role="tabpanel">
-
+                                <h6>The leader has not joined the Neta app yet.You can contact him to join by contacting the leader </h6>
                     </div>
                     <div class="tab-pane fade" id="History" role="tabpanel">
 

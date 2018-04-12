@@ -31,6 +31,7 @@ export class VotingBoothComponent implements OnInit {
     private candidateService: CondidatesService,
     private cloudnaryService: CloudnaryService,
     private profileService: CandidateProfileService,
+  
   ) {
     this.cUrl = cloudnaryService.cloudnaryUrl;
   }
@@ -50,6 +51,7 @@ export class VotingBoothComponent implements OnInit {
 
   onProfileView(id) {
     console.log('hello:' + id);
+
     this.profileService.navigateCandidate(id, this.constituency_id);
   }
 
