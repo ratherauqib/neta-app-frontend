@@ -26,59 +26,24 @@
     </div>
     <div class="candidate-block popular-candidate">
             <h3>Popular Candidates</h3>
+
+            <loader *ngIf="loading"></loader>
+
             <ul class="candidate-list">
-                <li>
+                <li *ngFor="let candidate of candidates">
                     <span class="candidate-pic">
                         <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
+                          <img src="{{ cUrl + candidate.party_image.cloudinary.public_id + '.jpg' }}" class="imageStyle">
                         </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
+                        <img src="{{ cUrl + candidate.candidate_profile_pic.cloudinary.public_id + '.jpg' }}" class="imageStyle">
+                      </span>
                     <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
+                        <h6 class="candidate-party-name">{{candidate.party_abbreviation}}</h6>
+                        <h4 (click)="onProfileView(candidate.candidate_id)" class="emptyAnchor">{{candidate.candidate_name}}</h4>
                     </div>
                     <button class="btn vote-btn">Vote Now</button>
                 </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
+            
             </ul>
             <div class="more-news">
                 <a href="javascript:void(0)" class="more-det">See ALL
@@ -89,57 +54,18 @@
         <div class="candidate-block Influencers-candidate">
             <h3>Popular Influencers</h3>
             <ul class="candidate-list">
-                <li>
+                <li *ngFor="let influencer of popularInfluencers">
                     <span class="candidate-pic">
                         <span class="candidate-party">
                             <img src="assets/images/congress.png" alt="congress.png" />
                         </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
+                        <img src="{{ cUrl + influencer.influencer_profile_pic.cloudinary.public_id + '.jpg' }}" class="imageStyle">
                     </span>
                     <div class="candidate-info">
                         <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
+                        <h4 (click)="onProfileView(candidate.candidate_id)" class="emptyAnchor">{{influencer.influencer_name}}</h4>
                     </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
-                </li>
-                <li>
-                    <span class="candidate-pic">
-                        <span class="candidate-party">
-                            <img src="assets/images/congress.png" alt="congress.png" />
-                        </span>
-                        <img src="assets/images/candidate.png" alt="candidate.png" />
-                    </span>
-                    <div class="candidate-info">
-                        <h6 class="candidate-party-name">INC</h6>
-                        <h4>Rahul Gandhi</h4>
-                    </div>
-                    <button class="btn vote-btn">Vote Now</button>
+                    <button class="btn vote-btn slected">Vote Now</button>
                 </li>
             </ul>
             <div class="more-news">

@@ -1,3 +1,4 @@
+import { Candidate } from './../../../shared/models/candidate';
 
 import { CandidateProfileService } from './../../../shared/services/candidate-profile.service';
 import { CloudnaryService } from './../../../shared/services/cloudnary.service';
@@ -19,7 +20,7 @@ export class VotingBoothComponent implements OnInit {
 		local_bodies: false,
 	}
   loading:boolean = false;
-  candidates: any = [];
+  candidates:Candidate[];
   cUrl: string = '';
   constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
   isActiveName:boolean = false;
