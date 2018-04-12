@@ -1,3 +1,4 @@
+import { Candidate } from './models/candidate';
 import { CloudnaryService } from './services/cloudnary.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,8 @@ import { CondidatesService } from './services/condidates.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateProfileService } from './services';
 import { LoaderComponent } from './components/loader/loader.component';
+import { InfluencersService } from './services/influencers.service';
+
 
 
 
@@ -21,7 +24,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'neta-dev' } as CloudinaryConfiguration)
   ],
   declarations: [NotFoundComponent, LoaderComponent],
-  providers:[CondidatesService,CandidateProfileService,CloudnaryService],
+  providers:[CondidatesService,CandidateProfileService,CloudnaryService,InfluencersService],
   exports:[CommonModule,LoaderComponent]
 })
 export class SharedModule { }
