@@ -1,6 +1,7 @@
+import { CloudnaryService } from './../../../shared/services/cloudnary.service';
 import { Component, OnInit } from '@angular/core';
 import { CandidateProfileService } from '../../../shared/services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { candidateProfileModel } from './profilemodel';
 
 declare var jQuery: any;
@@ -10,17 +11,20 @@ declare var jQuery: any;
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile: candidateProfileModel;//add model
-  CANDIDATE_ID = "ce9d1130-b765-4e1b-a65b-f3cc23283db0";
-  CONSTITUENCY_ID = "52d40fe8-1490-421e-9dbe-08b2c13fb251";
-  info: any;
-  cloudNaryUrl = "http://res.cloudinary.com/neta-dev/image/upload/";
-  contact_info: any;
-  party_info: any;
-  constructor(private leaderProfile: CandidateProfileService, route: ActivatedRoute) {
-    this.CANDIDATE_ID = route.snapshot.params.can_id || this.CANDIDATE_ID;
-    this.CONSTITUENCY_ID = route.snapshot.params.con_id || this.CONSTITUENCY_ID;
-  }
+CANDIDATE_ID="ce9d1130-b765-4e1b-a65b-f3cc23283db0";
+CONSTITUENCY_ID="52d40fe8-1490-421e-9dbe-08b2c13fb251";
+info:any;
+cloudNaryUrl:string='';
+contact_info:any;
+party_info:any;
+  constructor(private leaderProfile:CandidateProfileService,private router:Router,private cloudnaryService:CloudnaryService,route:ActivatedRoute) {
+    this.cloudNaryUrl = cloudnaryService.cloudnaryUrl;
+    this.CANDIDATE_ID= route.snapshot.params['cid'];
+    this.CONSTITUENCY_ID=route.snapshot.params['aid'];
+    // let params=this.router.parseUrl(this.router.url);
+    // console.log("Auqib",params.queryParams.id);
+    // console.log("Auqib",params.queryParams.id);
+   }
 
   ngOnInit() {
     this.leaderProfile.getCanditateProfile(this.CANDIDATE_ID, this.CONSTITUENCY_ID).subscribe(res => {
@@ -52,4 +56,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+
+  filterRupees(rupee){
+   let r= rupee.split(" ");
+   
+    return +r[1];
+  }
 }

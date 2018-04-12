@@ -16,7 +16,8 @@ import { SiteModule } from './site/site.module';
     BrowserModule,
     SharedModule,
     SiteModule,
-    routes
+    routes,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
