@@ -11,6 +11,7 @@ import { VotingBoothComponent } from './components/voting-booth/voting-booth.com
 import { SiteComponent } from './site.component';
 import { AppHeaderComponent } from './toolbars/app-header/app-header.component';
 import { SidebarComponent } from './toolbars/sidebar/sidebar.component';
+import { LocationDetectorComponent } from './components/voting-booth/location-detector/location-detector.component';
 
 
 
@@ -29,6 +30,7 @@ import { SidebarComponent } from './toolbars/sidebar/sidebar.component';
     VotingBoothComponent,
     ResultsComponent,
     StarCitizensComponent,
+    LocationDetectorComponent,
   ]
 })
 export class SiteModule { }
