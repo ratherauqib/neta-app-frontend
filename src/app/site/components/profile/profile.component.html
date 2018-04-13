@@ -1,3 +1,5 @@
+
+<loader *ngIf="loading"></loader>
 <section class="cover-pic" style="background-image:url('assets/images/bg.png')"></section>
 <section>
     <div class="upper-tab-section inner-tab">
@@ -6,7 +8,7 @@
                 <div class="col-md-3 col-sm-3 col-lg-3">
                     <div class="leader-profile-pic">
                         <!-- <img src="assets/images/leader.png" alt="leader" /> -->
-                        <img src="{{cloudNaryUrl}}{{info.profile_pic.cloudinary.public_id}}.jpg" style="height:100%;width:100%;" alt="leader"/>                         
+                        <img src="{{cloudNaryUrl+info.profile_pic.cloudinary.public_id}}.jpg" style="height:100%;width:100%;" alt="leader"/>                         
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-lg-9">
@@ -29,20 +31,20 @@
 
         </div>
     </div>
-    <loader *ngIf="loading"></loader>
+    
     <div class="container main-container">
         <div class="row custom-row">
             <div class="co-md-3 col-lg-3 col-xs-12 col-sm-12">
                 <div class="left-sidebar">
                     <div class="info-side-block">
-                        <h3>{{party_info.candidature.candidate_name}}
+                        <h3>{{ party_info.candidature.candidate_name }}
                             <span class="new-badges">new</span>
                         </h3>
                         <ul>
                             <li>
                                 <span class="lead-info-icons noborder">
                                     <!-- <img src=" alt="" /> -->
-                             <img src="{{cloudNaryUrl+party_info.party_profile_pic.cloudinary.public_id}}.jpg" style="height:auto;width:100%;"/>
+                             <img src="{{cloudNaryUrl + party_info.party_profile_pic.cloudinary.public_id }}.jpg" style="height:auto;width:100%;"/>
                                 </span>{{party_info.party_name}}</li>
                             <li>
                                 <span class="lead-info-icons">
@@ -277,6 +279,16 @@
                                 <h6>The leader has not joined the Neta app yet.You can contact him to join by contacting the leader </h6>
                     </div>
                     <div class="tab-pane fade" id="History" role="tabpanel">
+                        <table class="table">
+                            <tr><th>YEAR</th><th>CONSTITUENCY</th><th>ELECTION</th><th>PARTY</th><th>RANK</th></tr>
+                            <tr *ngFor="let lh of leader_history">
+                                <td>{{lh.year}}</td>
+                                <td>{{lh.constituency}}</td>
+                                <td>{{lh.election}}</td>
+                                <td>{{lh.party_abbreviation}}</td>
+                                <td>{{lh.result}}</td>
+                            </tr>
+                        </table>
 
                     </div>
                     <!--/.Panel 2-->
@@ -290,7 +302,6 @@
                             with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
                             desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </p>
-
                     </div>
                 </div>
             </div>
