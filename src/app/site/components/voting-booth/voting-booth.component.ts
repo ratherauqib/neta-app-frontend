@@ -25,7 +25,7 @@ export class VotingBoothComponent implements OnInit {
   constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
   isActiveName:boolean = false;
   isActiveVotes:boolean = true;
-
+  isVoted:boolean = false;
   
 
   constructor(
@@ -65,6 +65,16 @@ export class VotingBoothComponent implements OnInit {
     this.isActiveVotes = true;
     this.isActiveName = false;
     this.candidates = _.sortBy(this.candidates,o=>o.votes);
+  }
+
+  onVote(candidate){
+    console.log(candidate);
+    
+    candidate.votes++;
+    this.isVoted = true;
+     candidate.is_voted_by_me = true;
+    console.log(this.isVoted);
+    
   }
 
   switchTab(type) {

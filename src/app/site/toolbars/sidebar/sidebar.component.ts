@@ -1,3 +1,4 @@
+import { Influencer } from './../../../shared/models/influencer';
 import { Component, OnInit } from '@angular/core';
 
 import { Candidate } from './../../../shared/models/candidate';
@@ -13,8 +14,8 @@ import { InfluencersService } from './../../../shared/services/influencers.servi
 })
 export class SidebarComponent implements OnInit{
 
-  influencers:any=[];
-  popularInfluencers:any=[];
+  influencers:Influencer[];
+  popularInfluencers:Influencer[] = [];
   candidates:Candidate[];
   cUrl: string = '';
   constituency_id: string = '44443cf7-51ad-422d-a9c6-11a322d5797a';
@@ -56,7 +57,7 @@ export class SidebarComponent implements OnInit{
 
       this.influencers.forEach(element => {
         if(count<4){
-          this.popularInfluencers.push(element);
+          this.popularInfluencers.push(element) 
           count++;
         }
       });
