@@ -568,6 +568,7 @@ span.new-badges {
 }
 span.lead-info-icons {
     width: 30px;
+    overflow: hidden;
     height: 30px;
     position: absolute;
     left: 0;
@@ -1163,4 +1164,7 @@ span.img-icon img{  width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+span.info-list-icon svg {
+    height: 20px;
 }
