@@ -45,7 +45,7 @@ export class VotingBoothComponent implements OnInit {
     this.loading = true;
     this.candidateService.getAllCandidates().subscribe(data => {
       this.loading = false;
-      this.candidates = data.json().data;
+      this.candidates = data.data;
       console.log(this.candidates);
     })
   }
@@ -54,6 +54,12 @@ export class VotingBoothComponent implements OnInit {
     console.log('hello:' + id);
 
     this.profileService.navigateCandidate(id, this.constituency_id);
+  }
+  //added by auqib
+  selectedid(ids){
+    console.log('constituency',ids.c_id);
+    console.log('assembly',ids.a_id);
+ 
   }
 
   sortByName(){
@@ -64,7 +70,7 @@ export class VotingBoothComponent implements OnInit {
   sortByVotes(){
     this.isActiveVotes = true;
     this.isActiveName = false;
-    this.candidates = _.sortBy(this.candidates,o=>o.votes);
+    this.candidates = _.orderBy(this.candidates,o=> o.votes, ['desc'])
   }
 
   onVote(candidate){

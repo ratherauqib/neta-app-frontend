@@ -39,7 +39,7 @@ export class SidebarComponent implements OnInit{
     this.loading = true;
     this.candidateService.getAllCandidates().subscribe(data => {
       this.loading = false;
-      this.candidates = data.json().data;
+      this.candidates = data.data;
       console.log(this.candidates);
     })
   }
@@ -49,18 +49,21 @@ export class SidebarComponent implements OnInit{
     this.loading = true;
    
     this.influencerService.getAllInfluencers()
-    .subscribe(data => {
+    .subscribe(res => {
       let count = 0;
       this.loading = false;
-      this.influencers = data.json().data;
+      console.log("javaid",res);
+      
+      this.influencers = res.data;
       console.log('All influencers:',this.influencers);
-
-      this.influencers.forEach(element => {
+    for(let element of this.influencers)
+    {
+//      this.influencers.forEach(element => {
         if(count<4){
           this.popularInfluencers.push(element) 
           count++;
         }
-      });
+      }
     console.log('Popular influencers:',this.popularInfluencers);
     })
   }

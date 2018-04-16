@@ -4,8 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 
 import { CookieService } from './cookie.service';
+import { HttpHeaders } from '@angular/common/http';
 
 export class BaseService {
+  
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Accept: "application/json"
+    })
+  };
 
   token: any;
   protected _url = environment.API;

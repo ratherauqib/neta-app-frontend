@@ -13,6 +13,7 @@ import { CandidateProfileService } from './services';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CookieService } from './services/cookie.service';
 import { InfluencersService } from './services/influencers.service';
+import { LocationService } from './services/location.service';
 
 
 
@@ -26,7 +27,7 @@ import { InfluencersService } from './services/influencers.service';
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'neta-dev' } as CloudinaryConfiguration)
   ],
   declarations: [NotFoundComponent, LoaderComponent],
-  providers:[CondidatesService,CandidateProfileService,CloudnaryService,CookieService,InfluencersService],
+  providers:[CondidatesService,CandidateProfileService,CloudnaryService,CookieService,LocationService,InfluencersService],
   exports:[CommonModule,LoaderComponent]
 })
 export class SharedModule { }

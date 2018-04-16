@@ -12,7 +12,8 @@ import { SiteComponent } from './site.component';
 import { AppHeaderComponent } from './toolbars/app-header/app-header.component';
 import { SidebarComponent } from './toolbars/sidebar/sidebar.component';
 import { LocationDetectorComponent } from './components/voting-booth/location-detector/location-detector.component';
-
+import { ContactInfoComponent } from './components/profile/contact-info/contact-info.component';
+import {FormsModule}from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { LocationDetectorComponent } from './components/voting-booth/location-de
     CommonModule,
     SharedModule,
     routes,
+    FormsModule
   ],
   declarations: [
     SiteComponent,
@@ -31,6 +33,7 @@ import { LocationDetectorComponent } from './components/voting-booth/location-de
     ResultsComponent,
     StarCitizensComponent,
     LocationDetectorComponent,
+    ContactInfoComponent,
   ]
 })
 export class SiteModule { }

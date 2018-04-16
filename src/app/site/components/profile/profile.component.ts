@@ -1,9 +1,10 @@
 import { CloudnaryService } from './../../../shared/services/cloudnary.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CandidateProfileService } from '../../../shared/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from '../../../shared/services/cookie.service';
-import { PartySupportInfo, Info,ContactInfo } from '../../../shared/models/profilemodel';
+import { PartySupportInfo, Info, ContactInfo, Profile, LeaderHistroy } from '../../../shared/models/profilemodel';
+import { Subscription } from 'rxjs/Subscription';
 
 declare var jQuery: any;
 @Component({
@@ -11,19 +12,19 @@ declare var jQuery: any;
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
-
+  c_profile: Profile
   CANDIDATE_ID = "ce9d1130-b765-4e1b-a65b-f3cc23283db0";
   CONSTITUENCY_ID = "52d40fe8-1490-421e-9dbe-08b2c13fb251";
-  
+
   cloudNaryUrl: string = '';
-  
-  info:Info;
-  contact_info:ContactInfo;
-  party_info:PartySupportInfo;
-  leader_history:any;
+  info: Info;
+  contact_info: ContactInfo;
+  party_info: PartySupportInfo;
+  leader_history: LeaderHistroy[];
   loading = true; //renders loader;
+  subs: Subscription;
   constructor(
     private leaderProfile: CandidateProfileService,
     private router: Router,
@@ -33,43 +34,47 @@ export class ProfileComponent implements OnInit {
     this.cloudNaryUrl = cloudnaryService.cloudnaryUrl;
     this.CANDIDATE_ID = JSON.parse(this.cookie.readCookie("c_id"));
     this.CONSTITUENCY_ID = JSON.parse(this.cookie.readCookie("con_id"));
-
-
   }
 
+
   ngOnInit() {
-    this.leaderProfile.getCanditateProfile(this.CANDIDATE_ID, this.CONSTITUENCY_ID)
-      .subscribe(res => {
-        console.log("Profile", res);
-        // console.log("info",res.data.info);
-        this.info = res.data.info;
-        this.contact_info = res.data.contact_info;
-        this.party_info = res.data.party_and_support_info;
-        console.log("Contact_info", this.party_info);
+    this.subs = this.leaderProfile.getCanditateProfile(this.CANDIDATE_ID, this.CONSTITUENCY_ID)
+      .subscribe(resp => {
+        // console.log("Profile", resp);
+
+        this.c_profile = resp.data;
+
+        // console.log("THIS IS HTTP CLIENT TEST",this.c_profile.contact_info);
+        this.contact_info = this.c_profile.contact_info;
+        this.party_info = this.c_profile.party_and_support_info;
+        this.info = this.c_profile.info;
+        // console.log("Contact_info", this.party_info);
         this.loading = false;
+        // console.log("THIS IS data ",this.c_profile);
       });
+
 
     this.leaderProfile.getCandidatesCandidatures(this.CANDIDATE_ID, this.CONSTITUENCY_ID)
       .subscribe(res => {
-        console.log("Auqib this is what 0", res,res.data.length);
-        this.leader_history=res.data;
+        // console.log("Auqib this is what 0", {...res});
+        this.leader_history = [...res['data']];
       });
 
 
-    // jQuery('.my-toggle ').click(function () {
-    //   jQuery(this).toggleClass('open');
-    //   jQuery('body').toggleClass('open');
-    // });
-    // jQuery('button.search-btn').click(function () {
-    //   jQuery('header').toggleClass('open');
-    // });
-    // jQuery(window).scroll(function () {
-    //   if (jQuery(window).scrollTop() >= 30) {
-    //     jQuery('header').addClass('fixed');
-    //   } else {
-    //     jQuery('header').removeClass('fixed');
-    //   }
-    // });
+    jQuery('.my-toggle ').click(function () {
+      jQuery(this).toggleClass('open');
+      jQuery('body').toggleClass('open');
+    });
+    jQuery('button.search-btn').click(function () {
+      jQuery('header').toggleClass('open');
+    });
+    jQuery(window).scroll(function () {
+      if (jQuery(window).scrollTop() >= 30) {
+        jQuery('header').addClass('fixed');
+      } else {
+        jQuery('header').removeClass('fixed');
+      }
+    });
   }
 
 
@@ -79,5 +84,7 @@ export class ProfileComponent implements OnInit {
     return +r[1];
   }
 
-
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 }

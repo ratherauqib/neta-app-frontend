@@ -4,7 +4,7 @@
     <li>Jalandhar Cantt
       <span>
         <!-- changes  -->
-        <button type="button" class="btn btn-primary1" data-toggle="modal" data-target="#welcome-back">
+        <button type="button" class="btn btn-primary1"  data-toggle="modal" data-target="#welcome-back">
           <i class="material-icons">mode_edit</i>
         </button>
 
@@ -36,7 +36,9 @@
 
                     <div class="form-group">
                       <label for="name">Your Location</label>
-                      <button type="button" class="btn light-btn " >
+                      <button type="button" class="btn light-btn "(click)="getLocation()" >
+                        <!-- <loader *ngIf="loading"></loader> -->
+                      
                         <i class="material-icons">location_searching</i> Detect my Location</button>
                     </div>
                     <div class="border-outer">
@@ -48,41 +50,38 @@
                 <div class="row">
                   <div class="col pb10">
                     <div class="field-title">State</div>
-                    <select class="demo-default select-beast" placeholder="State">
-                      <option value="4">Punjab</option>
-                      <option value="1">Assam</option>
-                      <option value="3">Gujrat</option>
-                      <option value="5">Bihar</option>
+                    <select class="form-control demo-default select-beast" placeholder="State">
+                      <option  [value]="s_state.id" *ngIf="s_state">{{s_state.name}}</option>
+                      <option value="" *ngIf="!s_state">selected</option>
                     </select>
                   </div>
                 </div>
                 <div class="row pt5">
                   <div class="col ">
                     <div class="field-title">District</div>
-                    <select class="demo-default select-beast" placeholder="Select ">
-                      <option value="4">Thomas Edison</option>
-                      <option value="1">Nikola</option>
-                      <option value="3">Nikola Tesla</option>
-                      <option value="5">Arnold Schwarzenegger</option>
+                  
+                    <select class="form-control demo-default select-beast" #t
+                      (click)="getConstituencies($event)"
+                      placeholder="Select ">
+                      <!-- <option [value]="s_cons.id" *ngIf="s_cons ;else other">{{s_cons.name}}</option> -->
+                     
+                          <option *ngFor=" let c of cons" [value]="c.id">{{c.name}}</option>
+                  
+                      
                     </select>
                   </div>
                   <div class="col">
                     <div class="field-title">Constituency</div>
                     <select class="demo-default select-beast" placeholder="Select ">
-                      <option value="4">Thomas Edison</option>
-                      <option value="1">Nikola</option>
-                      <option value="3">Nikola Tesla</option>
-                      <option value="5">Arnold Schwarzenegger</option>
-                      <option value="2">Thomas Edison</option>
-                      <option value="6">Nikola</option>
-                      <option value="8">Nikola Tesla</option>
-                      <option value="10">Arnold Schwarzenegger</option>
+                      <option *ngIf="s_assembly" [value]="s_assembly.id">{{s_assembly.name}}</option>
+                      <option *ngIf="!s_assembly" value="1">Nikola</option>
+                
                     </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn green-btn active" data-dismiss="modal">Next</button>
+                    <button type="button" class="btn green-btn active" data-dismiss="modal" (click)="next()">Next</button>
                   </div>
                 </div>
               </div>

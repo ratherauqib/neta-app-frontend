@@ -1,3 +1,4 @@
+
 export interface ContactInfo{
             email: string,
             facebook: string,
@@ -54,3 +55,23 @@ export interface PartySupportInfo{
     supported_user_info:{},
     vote_percentage:string,
 };
+export interface Profile{
+    contact_info:ContactInfo,
+    info:Info,
+    id:string,
+    party_and_support_info:PartySupportInfo,
+
+
+}
+
+
+
+export interface LeaderHistroy{
+constituency:string,
+election:string,
+id:string,
+party:string,
+party_abbreviation:string,
+result:string,
+year:number,
+}

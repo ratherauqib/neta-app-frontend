@@ -38,7 +38,7 @@
                 <div class="left-sidebar">
                     <div class="info-side-block">
                         <h3>{{ party_info.candidature.candidate_name }}
-                            <span class="new-badges">new</span>
+                            <span *ngIf="LABEL" class="new-badges" [style.background-Color]>{{LABEL.name}}</span>
                         </h3>
                         <ul>
                             <li>
@@ -74,49 +74,9 @@
                         </div>
                         <button type="button" class="btn issue-btn">Vote Now</button>
                     </div>
-                    <div class="info-side-block">
-                        <h5>Contact info</h5>
-                        <ul class="leader-info-list">
-                            <li>
-                                <span class="info-list-icon">
-                                    <i class="material-icons">call</i>
-                                </span>
-                                <label>Phone</label>
-                                <span class="info-det">{{contact_info.phone||"not provided"}}</span>
-                            </li>
-                            <li>
-                                <span class="info-list-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </span>
-                                <label>email</label>
-                                <span class="info-det">{{contact_info.email}}</span>
-                            </li>
-                            <li>
-                                <span class="info-list-icon">
-                                    <i class="fas fa-globe"></i>
-                                </span>
-                                <label>Website</label>
-                                <span class="info-det">{{contact_info.email}}</span>
-                            </li>
-                            <li>
-                                <span class="info-list-icon">
-                                    <i class="fab fa-facebook-f"></i>
-                                </span>
-                                <label>FACEBOOK</label>
-                                <span class="info-det">{{contact_info.facebook}}</span>
-                            </li>
-                            <li>
-                                <span class="info-list-icon">
-                                    <i class="fab fa-twitter"></i>
-                                </span>
-                                <label>Twitter</label>
-                                <span class="info-det">{{contact_info.twitter}}</span>
-                            </li>
 
-
-
-                        </ul>
-                    </div>
+                    <contact-info [ContactInfo]="contact_info"></contact-info> <!--passed contact info to contact-info component -->
+                
                 </div>
             </div>
             <div class="co-md-6 col-lg-6 col-xs-12 col-sm-12">

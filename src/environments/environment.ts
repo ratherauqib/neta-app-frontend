@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   API:'https://neta-dev.herokuapp.com/api/v1',
+  
   PROTOCOL: 'https://',
   CLIENT_ID: 'netawebapp',
   CLIENT_SECRET: '$2a$10$0.dfDGl.8Es9cAm3ZJyvdO7ElHwBG.pnJjJxUP/LUtacIqk6eUmCa',
