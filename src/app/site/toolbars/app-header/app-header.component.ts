@@ -12,7 +12,13 @@ export class AppHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
+    $('.my-toggle ').click(function () {
+      $(this).toggleClass('open');
+      $('body').toggleClass('open');
+  });
+  $('button.search-btn').click(function () {
+      $('header').toggleClass('open');
+  });
   }
 
 }

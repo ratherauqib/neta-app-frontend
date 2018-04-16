@@ -23,7 +23,7 @@
 
               <!-- Modal body -->
               <div class="modal-body">
-
+                <form>
                 <div class="row">
                   <div class="col">
                     <div class="cir-img-outer ">
@@ -37,9 +37,9 @@
                     <div class="form-group">
                       <label for="name">Your Location</label>
                       <button type="button" class="btn light-btn "(click)="getLocation()" >
-                        <!-- <loader *ngIf="loading"></loader> -->
-                      
-                        <i class="material-icons">location_searching</i> Detect my Location</button>
+                          <small-loader *ngIf="loading"></small-loader>
+                        <i class="material-icons">location_searching</i>  Detect my Location</button>
+                        
                     </div>
                     <div class="border-outer">
                       <hr>
@@ -50,9 +50,10 @@
                 <div class="row">
                   <div class="col pb10">
                     <div class="field-title">State</div>
-                    <select class="form-control demo-default select-beast" placeholder="State">
-                      <option  [value]="s_state.id" *ngIf="s_state">{{s_state.name}}</option>
-                      <option value="" *ngIf="!s_state">selected</option>
+                    <select class="form-control demo-default select-beast" placeholder="State" [(ngModel)]="state" name="state" (ngModelChange)="onChangeState($event)">
+                      <!-- <option  [value]="s_state.id" *ngIf="s_state">{{s_state.name}}</option> -->
+                      <!-- <option *ngFor="let state of states" #s="state.name" ngModel name="state">{{state.name}}</option> -->
+                      <option *ngFor="let s of states" [ngValue]="s" [selected]="s.name == selectedState">{{s.name}}</option>
                     </select>
                   </div>
                 </div>
@@ -60,30 +61,30 @@
                   <div class="col ">
                     <div class="field-title">District</div>
                   
-                    <select class="form-control demo-default select-beast" #t
-                      (click)="getConstituencies($event)"
-                      placeholder="Select ">
+                    <select class="form-control demo-default select-beast" [(ngModel)]="parliament" (ngModelChange)="onChangeParliament($event)" name="par" placeholder="Select ">
                       <!-- <option [value]="s_cons.id" *ngIf="s_cons ;else other">{{s_cons.name}}</option> -->
                      
-                          <option *ngFor=" let c of cons" [value]="c.id">{{c.name}}</option>
+                          <option *ngFor=" let p of parliaments" [ngValue]="p" [selected]="p.name == selectedDistrict">{{p.name}}</option>
                   
                       
                     </select>
                   </div>
                   <div class="col">
                     <div class="field-title">Constituency</div>
-                    <select class="demo-default select-beast" placeholder="Select ">
-                      <option *ngIf="s_assembly" [value]="s_assembly.id">{{s_assembly.name}}</option>
-                      <option *ngIf="!s_assembly" value="1">Nikola</option>
+                    <select class="demo-default select-beast" placeholder="Select " [(ngModel)]="assembly" name="assembly">
+                      <!-- <option *ngIf="s_assembly" [value]="s_assembly.id">{{s_assembly.name}}</option>
+                      <option *ngIf="!s_assembly" value="1">Nikola</option> -->
+                      <option *ngFor="let a of assemblies" [ngValue]="a" [selected]="a.name == selectedCons">{{a.name}}</option>
                 
                     </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn green-btn active" data-dismiss="modal" (click)="next()">Next</button>
+                    <button type="button" class="btn green-btn active" data-dismiss="modal" (click)="onNext()">Next</button>
                   </div>
                 </div>
+              </form>
               </div>
 
 

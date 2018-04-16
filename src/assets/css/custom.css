@@ -960,198 +960,14 @@ span.img-icon img{  width: 100%;
 }
 
 /* loader */
-
-
-
-.ouro {
+.loader{
+    margin-top: 180px;
     position: relative;
-    display:inline-block;
-    height: 46px;
-    width: 46px;
-    margin: 1em;
-    border-radius: 50%;  
-    background: none repeat scroll 0 0 #DDDDDD;
-    overflow:hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,.1) inset, 0 0 25px rgba(0,0,255,0.075);
+    float: left;
+    width: 100%;
+    justify-content: center;
+    display: flex;
 }
-
-.ouro:after {
-    content: "";
-    position: absolute;
-    top: 9px; left: 9px;
-    display: block;
-    height: 28px; width: 28px;
-    background: none repeat scroll 0 0 #F2F2F2;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-}
-.ouro > span {
-    position: absolute;
-    height: 100%; width: 50%;
-    overflow: hidden;
-}
-.left  { left:0   }
-.right { left:50% }
-
-.anim {
-    position: absolute;
-    left: 100%; top: 0;
-    height: 100%; width: 100%;
-    border-radius: 999px;
-    background: none repeat scroll 0 0 var(--main-color);
-    opacity: 0.8;
-    -webkit-animation: ui-spinner-rotate-left 3s infinite;
-    animation: ui-spinner-rotate-left 3s infinite;
-    -webkit-transform-origin: 0 50% 0;
-    transform-origin: 0 50% 0;
-}
-.left .anim {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-}
-.right .anim {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    left: -100%;
-    -webkit-transform-origin: 100% 50% 0;
-    transform-origin: 100% 50% 0;
-}
-
-.ouro3 .anim {
-   -webkit-animation-delay: 0s;
-   -webkit-animation-duration:3s;
-   -webkit-animation-timing-function: linear;
-   animation-delay: 0s;
-   animation-duration:3s;
-   animation-timing-function: linear;
-}
-.ouro3 .right .anim{
-   -webkit-animation-name: ui-spinner-rotate-right;
-   -webkit-animation-delay:0;
-   -webkit-animation-delay: 1.5s;
-   animation-name: ui-spinner-rotate-right;
-   animation-delay:0;
-   animation-delay: 1.5s;
-}
-
-/* round variation */
-.round .ouro:after {display:none }
-
-/* double variation */
-.double .ouro:after {
-  height: 13px; width: 13px;
-  left: 7px; top: 7px;
-  border: 10px solid #ddd;
-  background: transparent;
-  box-shadow: none;
-}
-/* Inspirated from  http://www.alessioatzeni.com/wp-content/tutorials/html-css/CSS3-loading-animation-loop/index.html */
-.ouro {
-    position: relative;
-    display:inline-block;
-    height: 46px;
-    width: 46px;
-    margin: 1em;
-    border-radius: 50%;  
-    background: none repeat scroll 0 0 #DDDDDD;
-    overflow:hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,.1) inset, 0 0 25px rgba(0,0,255,0.075);
-}
-
-.ouro:after {
-    content: "";
-    position: absolute;
-    top: 9px; left: 9px;
-    display: block;
-    height: 28px; width: 28px;
-    background: none repeat scroll 0 0 #F2F2F2;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-}
-.ouro > span {
-    position: absolute;
-    height: 100%; width: 50%;
-    overflow: hidden;
-}
-.left  { left:0   }
-.right { left:50% }
-
-.anim {
-    position: absolute;
-    left: 100%; top: 0;
-    height: 100%; width: 100%;
-    border-radius: 999px;
-    background: none repeat scroll 0 0 #786eea;
-    opacity: 0.8;
-    -webkit-animation: ui-spinner-rotate-left 3s infinite;
-    animation: ui-spinner-rotate-left 3s infinite;
-    -webkit-transform-origin: 0 50% 0;
-    transform-origin: 0 50% 0;
-}
-.left .anim {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-}
-.right .anim {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    left: -100%;
-    -webkit-transform-origin: 100% 50% 0;
-    transform-origin: 100% 50% 0;
-}
-
-.ouro3 .anim {
-   -webkit-animation-delay: 0s;
-   -webkit-animation-duration:3s;
-   -webkit-animation-timing-function: linear;
-   animation-delay: 0s;
-   animation-duration:3s;
-   animation-timing-function: linear;
-}
-.ouro3 .right .anim{
-   -webkit-animation-name: ui-spinner-rotate-right;
-   -webkit-animation-delay:0;
-   -webkit-animation-delay: 1.5s;
-   animation-name: ui-spinner-rotate-right;
-   animation-delay:0;
-   animation-delay: 1.5s;
-}
-
-/* round variation */
-.round .ouro:after {display:none }
-
-/* double variation */
-.double .ouro:after {
-  height: 13px; width: 13px;
-  left: 7px; top: 7px;
-  border: 10px solid #ddd;
-  background: transparent;
-  box-shadow: none;
-}
-
-@keyframes ui-spinner-rotate-right{
-  0%{transform:rotate(0deg)}
-  25%{transform:rotate(180deg)}
-  50%{transform:rotate(180deg)}
-  75%{transform:rotate(360deg)}
-  100%{transform:rotate(360deg)}
-}
-@keyframes ui-spinner-rotate-left{
-  0%{transform:rotate(0deg)}
-  25%{transform:rotate(0deg)}
-  50%{transform:rotate(180deg)}
-  75%{transform:rotate(180deg)}
-  100%{transform:rotate(360deg)}
-}
-
-@-webkit-keyframes ui-spinner-rotate-right{
-  0%{-webkit-transform:rotate(0deg)}
-  25%{-webkit-transform:rotate(180deg)}
-  50%{-webkit-transform:rotate(180deg)}
-  75%{-webkit-transform:rotate(360deg)}
-  100%{-webkit-transform:rotate(360deg)}
-}
-
 
 .loader-circle {
     position: fixed;
@@ -1168,3 +984,79 @@ span.img-icon img{  width: 100%;
 span.info-list-icon svg {
     height: 20px;
 }
+@keyframes lds-double-ring {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes lds-double-ring {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes lds-double-ring_reverse {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+      transform: rotate(-360deg);
+    }
+  }
+  @-webkit-keyframes lds-double-ring_reverse {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+      transform: rotate(-360deg);
+    }
+  }
+  .lds-double-ring {
+    position: relative;
+  }
+  .lds-double-ring div {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    top: 20px;
+    left: 20px;
+    border-radius: 50%;
+    border: 8px solid #000;
+    border-color: #007bff transparent #007bff transparent;
+    -webkit-animation: lds-double-ring 2s linear infinite;
+    animation: lds-double-ring 2s linear infinite;
+  }
+  .lds-double-ring div:nth-child(2) {
+    width: 140px;
+    height: 140px;
+    top: 30px;
+    left: 30px;
+    border-color: transparent #cccccc transparent #cccccc;
+    -webkit-animation: lds-double-ring_reverse 2s linear infinite;
+    animation: lds-double-ring_reverse 2s linear infinite;
+  }
+  .lds-double-ring {
+    width: 101px !important;
+    height: 101px !important;
+    -webkit-transform: translate(-50.5px, -50.5px) scale(0.505) translate(50.5px, 50.5px);
+    transform: translate(-50.5px, -50.5px) scale(0.505) translate(50.5px, 50.5px);
+  }
+.small-loader{
+    position: absolute;
+    margin-left: 189px;
+}
+
+

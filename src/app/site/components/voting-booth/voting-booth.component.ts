@@ -56,9 +56,9 @@ export class VotingBoothComponent implements OnInit {
     this.profileService.navigateCandidate(id, this.constituency_id);
   }
   //added by auqib
-  selectedid(ids){
-    console.log('constituency',ids.c_id);
-    console.log('assembly',ids.a_id);
+  selectedId(ids){
+    console.log('District id in voting booth:',ids.c_id);
+    console.log('Assembly id in voting booth:',ids.a_id);
  
   }
 

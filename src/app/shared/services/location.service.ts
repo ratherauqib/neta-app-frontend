@@ -10,7 +10,6 @@ export class LocationService extends BaseService {
   }
 
   getCurrentAddress(lat,lng){
-
     return this.http.get(this._url+'/constituencies/latlng?lat='+lat+'&lng='+lng)
     .map(res=>JSON.parse(JSON.stringify(res)))
   }
@@ -20,7 +19,7 @@ export class LocationService extends BaseService {
     .map(res=>JSON.parse(JSON.stringify(res)))
   }
 
-  getConstituencies(s_id){
+  getParliament(s_id){
     return this.http.get(this._url+'/constituencies/parliament?state_id='+s_id)
     .map(res=>JSON.parse(JSON.stringify(res)))
 

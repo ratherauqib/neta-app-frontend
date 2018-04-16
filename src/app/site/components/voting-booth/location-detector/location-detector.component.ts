@@ -1,39 +1,51 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { element } from 'protractor';
+
 import { LocationService } from '../../../../shared/services/location.service';
+
 @Component({
   selector: 'location-detector',
   templateUrl: './location-detector.component.html'
 })
-export class LocationDetectorComponent {
-  geolocationPosition;
-  loading = true;
-  s_state: { id: string, name: string,isSelected:boolean }
-  s_cons: { id: string, name: string,isSelected:boolean };
-  s_assembly: { id: string, name: string,isSelected:boolean };
-
-  states:[{id:string,name:string,isSelected:boolean}]
-  cons:any[];
-  assembly:[{id:string,name:string,isSelected:boolean}];
-
-
+export class LocationDetectorComponent implements OnInit {
+  loading = false;
+  states: any[] = [];
+  parliaments: any[] = [];
+  assemblies: any[] = [];
+  selectedState: string = '';
+  selectedCons: string = '';
+  selectedDistrict: string = '';
+  parliamentId: string = '';
+  assemblyId: string = '';
 
   @Output("ids") C_ID = new EventEmitter<{}>();
 
-  constructor(private Address: LocationService) { }
+  constructor(private locationService: LocationService) { }
 
-
+  ngOnInit() {
+    this.locationService.getStates()
+      .subscribe(res => {
+        this.states = res.data;
+      });
+  }
 
   showData(res) {
+    this.loading = false;
     let address = res.data;
 
-    let constituency = this.findObjectByKey(address.parliament, 'id', address.selected.parliamentary_id);
-    let assembly = this.findObjectByKey(constituency.assembly, 'id', address.selected.assembly_id);
-    console.log(constituency);
-    console.log(this.s_assembly)
+    let curParliament = this.findObjectByKey(address.parliament, 'id', address.selected.parliamentary_id);
+    let curConstituency = this.findObjectByKey(curParliament.assembly, 'id', address.selected.assembly_id);
+    console.log(curParliament);
 
-   // this.states.push({ name: address.name, id: address.id,isSelected:true });
-    this.cons.push({ name: constituency.name, id: constituency.id,isSelected:true });
-    //this.assembly.push({ name: assembly.name, id: assembly.id,isSelected:true });
+
+    this.selectedState = address.name;
+    this.selectedDistrict = curParliament.name;
+    this.selectedCons = curConstituency.name;
+    this.parliamentId = curParliament.id;
+    this.assemblyId = curConstituency.id;
+    //this.states.push({ name: address.name, id: address.id,isSelected:true });
+    this.parliaments.push({ name: curParliament.name, id: curParliament.id, isSelected: true });
+    this.assemblies.push({ name: curConstituency.name, id: curConstituency.id, isSelected: true });
   }
   findObjectByKey(array, key, value) {
     for (let o of array) {
@@ -42,36 +54,48 @@ export class LocationDetectorComponent {
     }
     return null;
   }
-  next() {
-
-    this.C_ID.emit({ c_id: this.s_cons.id, a_id: this.s_assembly.id });//send cons and assembly id to parent component;
+  onNext() {
+    this.C_ID.emit({ c_id: this.parliamentId, a_id: this.assemblyId });//send cons and assembly id to parent component;
   }
 
 
-  getConstituencies(a) {
+  getParliament(a) {
     console.log("option sected", a);
-    this.Address.getConstituencies(this.s_state.id).subscribe(res=>{
+    this.locationService.getParliament(a).subscribe(res => {
       console.log(res.data.parliament);//got constituencies
-      this.cons=res.data.parliament;
-    })
-}
-selectedConstituency(id){
-  this.s_cons=null;
-  console.log("i am selected option",id);
-//  this.Address.getAssemblies();
-}
-getAssemblies(){
+      this.parliaments = res.data.parliament;
+      console.log('parliaments', this.parliaments);
 
-}
+    })
+  }
+  selectedConstituency(id) {
+
+    console.log("i am selected option", id);
+    //  this.Address.getAssemblies();
+  }
+  getAssemblies(id) {
+    console.log('district id', id);
+    this.parliaments.forEach(element => {
+      if (element.id === id) {
+        this.assemblies = element.assembly;
+      }
+    })
+    console.log('assemblies:', this.assemblies);
+
+
+  }
 
   getLocation() {
+    this.loading = true;
+    this.selectedState = '';
+    this.selectedCons = '';
+    this.selectedDistrict = '';
     if (window.navigator && window.navigator.geolocation) {
       this.loading = true;
       window.navigator.geolocation.getCurrentPosition(
         position => {
-          this.geolocationPosition = position,
-            console.log(position);
-          this.Address.getCurrentAddress(position.coords.latitude, position.coords.longitude)
+          console.log('Position before lat and long:', position);
+          this.locationService.getCurrentAddress(position.coords.latitude, position.coords.longitude)
             .subscribe(res => { this.showData(res) });
         },
         error => {
@@ -91,6 +115,14 @@ getAssemblies(){
         }
       );
     };
+  }
+  onChangeState(e) {
+    this.parliamentId = e.id;
+    this.getParliament(e.id);
+  }
+  onChangeParliament(e) {
+    this.assemblyId = e.id;
+    this.getAssemblies(e.id);
   }
 
 }
