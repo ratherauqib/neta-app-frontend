@@ -77,6 +77,7 @@ export class VotingBoothComponent implements OnInit {
     console.log(candidate);
     
     candidate.votes++;
+    candidate.percentage += 4.5; 
     this.isVoted = true;
      candidate.is_voted_by_me = true;
     console.log(this.isVoted);

@@ -88,8 +88,8 @@ export class LocationDetectorComponent implements OnInit {
   getLocation() {
     this.loading = true;
     this.selectedState = '';
-    this.selectedCons = '';
     this.selectedDistrict = '';
+    this.selectedCons = '';
     if (window.navigator && window.navigator.geolocation) {
       this.loading = true;
       window.navigator.geolocation.getCurrentPosition(
@@ -118,7 +118,9 @@ export class LocationDetectorComponent implements OnInit {
   }
   onChangeState(e) {
     this.parliamentId = e.id;
+    this.assemblies = [];
     this.getParliament(e.id);
+
   }
   onChangeParliament(e) {
     this.assemblyId = e.id;
