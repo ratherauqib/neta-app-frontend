@@ -17,6 +17,9 @@ export class LocationDetectorComponent implements OnInit {
   selectedDistrict: string = '';
   parliamentId: string = '';
   assemblyId: string = '';
+  state:any;
+  parliament:any;
+  assembly:any;
 
   @Output("ids") C_ID = new EventEmitter<{}>();
 
